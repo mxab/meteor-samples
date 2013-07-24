@@ -1,0 +1,52 @@
+<head>
+	<title>metoer-paging-example</title>
+</head>
+<body>
+	<div class="container-fluid">
+
+		<div class="row-fluid">
+			<div class="span6">
+				{{>article_list}}
+			</div>
+			<div class="span6">
+				
+				{{>selected_article}}
+			</div>
+		</div>
+	</div>
+</body>
+<template name="article_list">
+	<ul class="pager">
+  <li><a class="prev" href="#">Previous</a></li>
+  <li><a  class="next" href="#">Next</a></li>
+</ul>
+Total: {{page.total}}
+
+<div>
+	<ul class="media-list">
+		{{#each page.articles}}
+		{{>article_list_item}}
+		{{/each}}
+	</ul>
+</div>
+</template>
+<template name="article_list_item">
+<li class="media">
+	<a class="pull-left" href="#">
+		
+	<img class="media-object img-polaroid" src="placeholder.png">
+	</a>
+	<div class="media-body">
+		<h4 class="media-heading">{{title}}</h4>
+		{{teaser}}
+	</div>
+</li>
+</template>
+<template name="selected_article">
+{{#if articleSelected}}
+<h3>{{article.title}}</h3>
+{{article.text}}
+{{else}}
+<p>Select an article</p>
+{{/if}}
+</template>	
